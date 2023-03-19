@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>component lib</title>
+  <script>
+    var doc = document, win = window
+    var docEl = doc.documentElement
+    var resizeEvt = 'orientationchange' in win ? 'orientationchange' : 'resize'
+    win.setREM = function () {
+      if (!docEl.clientWidth) return
+      var clientWidth = docEl.clientWidth,
+        pcPX = 1024,
+        designWidth = 750,
+        remBase = 100,
+        baseWidth = clientWidth > pcPX ? pcPX : clientWidth,
+        fontSize = remBase * (baseWidth / designWidth)
+      docEl.style.fontSize = fontSize + 'px'
+    }
+    win.setREM()
+    console.log('-----')
+    if (doc.addEventListener) {
+      win.addEventListener(resizeEvt, win.setREM, false)
+      doc.addEventListener('DOMContentLoaded', win.setREM, false)
+    }
+  </script>
+  <script type="module" crossorigin src="/assets/index-5069a952.js"></script>
+  <link rel="stylesheet" href="/assets/index-739724b7.css">
+</head>
+
+<body>
+  <div id="app"></div>
+  
+</body>
+
+</html>
